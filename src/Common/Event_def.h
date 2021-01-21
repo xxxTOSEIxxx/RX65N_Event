@@ -51,6 +51,19 @@
 
 
 //-------------------------------------------------------------------
+// AudioPlaybackタスク用イベント
+//-------------------------------------------------------------------
+#define AUDIO_PLAYBACK_EVENT						( TASK_EVENT(TASK_KIND_AUDIO_PLAYBACK) )
+#define AUDIO_PLAYBACK_EVENT_START_REQ				( AUDIO_PLAYBACK_EVENT | 0x00000001 )										// 音声再生開始要求イベント
+#define AUDIO_PLAYBACK_EVENT_STOP_REQ				( AUDIO_PLAYBACK_EVENT | 0x00000002 )										// 音声再生停止要求イベント
+
+#define AUDIO_PLAYBACK_EVENT_SUCCESS				( AUDIO_PLAYBACK_EVENT | 0x00000011 )										// 成功イベント
+#define AUDIO_PLAYBACK_EVENT_ERROR					( AUDIO_PLAYBACK_EVENT | 0x00000012 )										// 異常イベント
+#define AUDIO_PLAYBACK_EVENT_AUDIO_END				( AUDIO_PLAYBACK_EVENT | 0x00000013 )										// 音声再生終了イベント
+
+
+
+//-------------------------------------------------------------------
 // MainAppタスク用イベント
 //-------------------------------------------------------------------
 #define APP_MAIN_EVENT								( TASK_EVENT(TASK_KIND_APP_MAIN) )

@@ -9,6 +9,7 @@ typedef enum
 	TASK_KIND_SYSTEM = 0,						// システムタスク
 	TASK_KIND_LED,								// LEDタスク
 	TASK_KIND_BUTTON,							// Buttonタスク
+	TASK_KIND_AUDIO_PLAYBACK,					// 音声再生タスク
 
 	TASK_KIND_APP_MAIN,							// 制御メインタスク
 //	TASK_KIND_APP_MACHINE_COM,					// 機械間通信タスク

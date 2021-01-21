@@ -119,6 +119,18 @@
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_cmt_rx/src}&quot;"/>
                                     									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_s2_rx}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_s2_rx/lib}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_longq}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_longq/src}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_mpc_rx}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_mpc_rx/src}&quot;"/>
+                                    									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/general}&quot;"/>
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_pincfg}&quot;"/>
@@ -183,7 +195,7 @@
                                     								
                                 </option>
                                 								
-                                <option id="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.linkerSection.1005610571" name="セクション (-start)" superClass="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.linkerSection" useByScannerDiscovery="false" value="SU,SI,B_1,R_1,B_2,R_2,B,R/04,C_1,C_2,C,C$*,D*,W*,L,P*/0FFE00000,EXCEPTVECT/0FFFFFF80,RESETVECT/0FFFFFFFC" valueType="string"/>
+                                <option id="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.linkerSection.1005610571" name="セクション (-start)" superClass="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.linkerSection" useByScannerDiscovery="false" value="SU,SI,B_1,R_1,B_2,R_2,B,R/04,C_1,C_2,C,C$*,D*,W*,L,P*/0FFE00000,AUDIO_DATA*/0FFE80000,EXCEPTVECT/0FFFFFF80,RESETVECT/0FFFFFFFC" valueType="string"/>
                                 								
                                 <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.userBefore.307455380" name="追加するオプション（すべての指定オプションの前に追加）" superClass="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.userBefore" useByScannerDiscovery="false" valueType="stringList">
                                     									
@@ -203,9 +215,137 @@
                                 								
                                 <option id="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.memoryType.1124870128" name="アドレス範囲指定方法 (-cpu(アドレス範囲指定方法))" superClass="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.memoryType" useByScannerDiscovery="false" value="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.memoryType.autoSpecify" valueType="enumerated"/>
                                 								
-                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.noneLinkageOrderList.975461294" name="(リンク順序のリスト) (-input/-library/-binary)" superClass="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.noneLinkageOrderList" valueType="stringList">
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.noneLinkageOrderList.975461294" name="(リンク順序のリスト) (-input/-library/-binary)" superClass="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.noneLinkageOrderList" useByScannerDiscovery="false" valueType="stringList">
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source/portable/Renesas/RX600v2\port_asm.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Common\Event.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Common\StageMap.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Common\Timer.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source\croutine.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source\event_groups.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source\list.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source/portable/MemMang\heap_4.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source/portable/Renesas/RX600v2\port.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source\queue.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source\stream_buffer.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source\tasks.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source\timers.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src\RX65N_Event.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_AppMain\Task_AppMain.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_AppMain\Task_AppMain_Stagemap_Idle.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_AppMain\Task_AppMain_Stagemap_MachineOperation.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_AppMain\Task_AppMain_Stagemap_SelectCourse.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_AudioPlayback\AudioPlaybackApi.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_AudioPlayback\Task_AudioPlayback_Main.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_AudioPlayback\Task_AudioPlayback_Stagemap_Play.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_AudioPlayback\Task_AudioPlayback_Stagemap_Stop.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_Button\Task_Button_Main.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_Led\LedApi.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/Task_Led\Task_Led_Main.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/frtos_skeleton\Task_AppMain.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/frtos_skeleton\Task_AudioPlayback.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/frtos_skeleton\Task_Button.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/frtos_skeleton\Task_Led.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/frtos_startup\freertos_object_init.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/frtos_startup\freertos_start.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/general\r_cg_hardware_setup.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/general\r_smc_cgc.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/general\r_smc_cgc_user.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/general\r_smc_interrupt.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/board/generic_rx65n\hwsetup.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\dbsct.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\lowlvl.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\lowsrc.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\mcu_locks.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\r_bsp_common.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\r_bsp_cpu.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\r_bsp_interrupts.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\r_bsp_locking.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\r_bsp_mcu_startup.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\r_bsp_software_interrupt.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\r_rx_intrinsic_functions.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\resetprg.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/all\sbrk.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/rx65n\mcu_clocks.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/rx65n\mcu_init.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/rx65n\mcu_interrupts.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/rx65n\mcu_mapped_interrupts.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_bsp/mcu/rx65n\vecttbl.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_cmt_rx/src\r_cmt_rx.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_gpio_rx/src\r_gpio_rx.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_gpio_rx/src/targets/rx65n\r_gpio_rx65n.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_longq/src\r_longq.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_mpc_rx/src\r_mpc_rx.obj&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;.\src/smc_gen/r_pincfg\Pin.obj&quot;"/>
                                     									
                                     <listOptionValue builtIn="false" value="&quot;.\RX65N_Event.lib&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_s2_rx/lib/s2_rx600_little_rtune.lib}&quot;"/>
+                                    								
+                                </option>
+                                								
+                                <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.inputFile.164048100" name="リンクするリロケータブル・ファイル、ライブラリ・ファイルおよびバイナリ・ファイル (-input/-library/-binary)" superClass="com.renesas.cdt.managedbuild.renesas.ccrx.linker.option.inputFile" useByScannerDiscovery="false" valueType="stringList">
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_s2_rx/lib/s2_rx600_little_rtune.lib}&quot;"/>
                                     								
                                 </option>
                                 							
@@ -289,6 +429,14 @@
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/general}&quot;"/>
                                     									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_longq}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_s2_rx}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_s2_rx/lib}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_mpc_rx}&quot;"/>
+                                    									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/smc_gen/r_pincfg}&quot;"/>
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/Common}&quot;"/>
@@ -298,6 +446,8 @@
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/Task_Button}&quot;"/>
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/Task_AppMain}&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src/Task_AudioPlayback}&quot;"/>
                                     								
                                 </option>
                                 								
@@ -327,11 +477,13 @@
                     					
                     <sourceEntries>
                         						
-                        <entry excluding="Task_AppMain|Task_Led|Task_Button|Common" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+                        <entry excluding="Task_AudioPlayback|Task_AppMain|Task_Led|Task_Button|Common" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
                         						
                         <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/Common"/>
                         						
                         <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/Task_AppMain"/>
+                        						
+                        <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/Task_AudioPlayback"/>
                         						
                         <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/Task_Button"/>
                         						

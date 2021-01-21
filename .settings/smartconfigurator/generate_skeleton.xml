@@ -4,5 +4,6 @@
         <row id="TASKOBJECTLINK1" oldValue="Task_Led"/>
         <row id="TASKOBJECTLINK2" oldValue="Task_Button"/>
         <row id="TASKOBJECTLINK3" oldValue="Task_AppMain"/>
+        <row id="TASKOBJECTLINK4" oldValue="Task_AudioPlayback"/>
     </generateSettings>
 </frtos_skeleton>

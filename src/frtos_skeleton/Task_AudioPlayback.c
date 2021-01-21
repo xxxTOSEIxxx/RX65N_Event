@@ -16,12 +16,19 @@
 *
 * Copyright (C) 2019 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
+/***********************************************************************************************************************
+Includes   <System Includes> , "Project Includes"
+***********************************************************************************************************************/
+#include "task_function.h"
+/* Start user code for import. Do not edit comment generated here */
+extern void Task_AudioPlayback_Main(void);
+/* End user code. Do not edit comment generated here */
 
-#ifndef TASK_FUNCTION_H_
-#define TASK_FUNCTION_H_
-void Task_Led(void * pvParameters);
-void Task_Button(void * pvParameters);
-void Task_AppMain(void * pvParameters);
-void Task_AudioPlayback(void * pvParameters);
-
-#endif /* TASK_FUNCTION_H_ */
+void Task_AudioPlayback(void * pvParameters)
+{
+/* Start user code for function. Do not edit comment generated here */
+	Task_AudioPlayback_Main();
+/* End user code. Do not edit comment generated here */
+}
+/* Start user code for other. Do not edit comment generated here */
+/* End user code. Do not edit comment generated here */

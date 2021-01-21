@@ -84,6 +84,15 @@ void Kernel_Object_init (void)
         }
     }
 
+    ret = xTaskCreate(Task_AudioPlayback, "Task_AudioPlayback", 512, NULL, 3, NULL);
+    if (pdPASS != ret)
+    {
+        while (1)
+        {
+            /* Failed! Task can not be created. */
+        }
+    }
+
     /************** semaphore creation ***********************/
 
     /************** queue creation ***************************/

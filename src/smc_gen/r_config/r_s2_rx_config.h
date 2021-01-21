@@ -14,14 +14,29 @@
 * following link:
 * http://www.renesas.com/disclaimer
 *
-* Copyright (C) 2019 Renesas Electronics Corporation. All rights reserved.
+* Copyright (C) 2014-2016 Renesas Electronics Corporation. All rights reserved.
 ***********************************************************************************************************************/
+/***********************************************************************************************************************
+* File Name    : r_s2_rx_config.h
+* Description  : Configuration options for the r_s2_rx module.
+***********************************************************************************************************************/
+/***********************************************************************************************************************
+* History : DD.MM.YYYY Version Description
+*         : 01.04.2014 3.01    First Release
+*         : 28.12.2014 3.02    Corresponded to RX71M/RX113.
+*         : 01.03.2015 3.03    Corresponded to RX231.
+*         : 01.04.2016 3.04    Corresponded to RX family.
+***********************************************************************************************************************/
+#ifndef S2_RX_CONFIG_HEADER_FILE
+#define S2_RX_CONFIG_HEADER_FILE
 
-#ifndef TASK_FUNCTION_H_
-#define TASK_FUNCTION_H_
-void Task_Led(void * pvParameters);
-void Task_Button(void * pvParameters);
-void Task_AppMain(void * pvParameters);
-void Task_AudioPlayback(void * pvParameters);
+/***********************************************************************************************************************
+Configuration Options
+***********************************************************************************************************************/
+/*
+	None
+*/
 
-#endif /* TASK_FUNCTION_H_ */
+#endif /* S2_RX_CONFIG_HEADER_FILE */
+
+

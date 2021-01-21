@@ -25,10 +25,13 @@
         <Setting id="ExtCLK" value="24000.0"/>
     </Segment>
     <Segment id="Component">
+        <Setting id="r_longq" value="FIT"/>
         <Setting id="r_bsp" value="FIT"/>
         <Setting id="r_cmt_rx" value="FIT"/>
         <Setting id="FreeRTOS_Object" value=""/>
+        <Setting id="r_s2_rx" value="FIT"/>
         <Setting id="r_gpio_rx" value="FIT"/>
+        <Setting id="r_mpc_rx" value="FIT"/>
         <Setting id="FreeRTOS_Kernel" value=""/>
     </Segment>
 </QE>

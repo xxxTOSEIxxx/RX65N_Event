@@ -59,7 +59,6 @@ void InitEvent(void)
 void CreateEvent(TASK_KIND_ENUM eTaskKind)
 {
 	uint8_t					i = 0;
-	uint8_t					j = 0;
 
 
 	if (g_tEvent.bInit != true)
@@ -80,13 +79,9 @@ void CreateEvent(TASK_KIND_ENUM eTaskKind)
 	g_tEvent.tTaskEvent[eTaskKind].EventGroupHandle = xEventGroupCreate();
 
 	// キューハンドル生成
-	for(i = 0 ; i < TASK_KIND_MAX ; i++)
+	for(i = 0 ; i < PRIORITY_KIND_MAX ; i++)
 	{
-		// プライオリティ種別分生成
-		for(j = 0 ; j < PRIORITY_KIND_MAX ; j++)
-		{
-			g_tEvent.tTaskEvent[i].QueueHandle[j] = xQueueCreate(QUEUE_LENGTH, sizeof(uint32_t));
-		}
+		g_tEvent.tTaskEvent[eTaskKind].QueueHandle[i] = xQueueCreate(QUEUE_LENGTH, sizeof(uint32_t));
 	}
 }
 
@@ -97,26 +92,14 @@ void CreateEvent(TASK_KIND_ENUM eTaskKind)
 bool SendEvent(TASK_KIND_ENUM eTaskKind, PRIORITY_KIND_ENUM ePriorityKind, uint32_t Event, TickType_t xTicksToWait)
 {
 	BaseType_t					Result = pdFALSE;
-	QueueHandle_t				MutexHandle = NULL;
-	EventGroupHandle_t			EventGroupHandle = NULL;
-	QueueHandle_t				QueueHandle = NULL;
 	EventBits_t					EventBit = 0x00000000;
 
 
-	// 指定タスクのミューテックスハンドル/イベントハンドル/キューハンドルのチェック
-	MutexHandle = g_tEvent.tTaskEvent[eTaskKind].MutexHandle;
-	EventGroupHandle = g_tEvent.tTaskEvent[eTaskKind].EventGroupHandle;
-	QueueHandle = g_tEvent.tTaskEvent[eTaskKind].QueueHandle[ePriorityKind];
-	if ((MutexHandle == NULL) || (EventGroupHandle == NULL) || (QueueHandle == NULL))
-	{
-		return false;
-	}
-
 	// ▼----------------------------------▼
-	xSemaphoreTake(MutexHandle, portMAX_DELAY);
+	xSemaphoreTake(g_tEvent.tTaskEvent[eTaskKind].MutexHandle, portMAX_DELAY);
 
 	// イベント送信
-	Result = xQueueSend(QueueHandle, &Event, xTicksToWait);
+	Result = xQueueSend(g_tEvent.tTaskEvent[eTaskKind].QueueHandle[ePriorityKind], &Event, xTicksToWait);
 	if (Result == pdTRUE)
 	{
 		// イベントグループbitを設定
@@ -129,10 +112,10 @@ bool SendEvent(TASK_KIND_ENUM eTaskKind, PRIORITY_KIND_ENUM ePriorityKind, uint3
 			EventBit = EVENT_GROUP_BIT_NORMAL;
 			break;
 		}
-		xEventGroupSetBits(EventGroupHandle, EventBit);
+		xEventGroupSetBits(g_tEvent.tTaskEvent[eTaskKind].EventGroupHandle, EventBit);
 	}
 
-	xSemaphoreGive(MutexHandle);
+	xSemaphoreGive(g_tEvent.tTaskEvent[eTaskKind].MutexHandle);
 	// ▲----------------------------------▲
 
 	return ((Result == pdTRUE) ? true : false);
@@ -208,10 +191,6 @@ bool SendEventFromISR(TASK_KIND_ENUM eTaskKind, PRIORITY_KIND_ENUM ePriorityKind
 bool ReceiveEvent(TASK_KIND_ENUM eTaskKind, uint32_t *pEvent, TickType_t xTicksToWait)
 {
 	BaseType_t					Result = pdFALSE;
-	QueueHandle_t				MutexHandle = NULL;
-	EventGroupHandle_t			EventGroupHandle = NULL;
-	QueueHandle_t				High_QueueHandle = NULL;
-	QueueHandle_t				Normal_QueueHandle = NULL;
 	EventBits_t					EventBits = 0x00000000;
 
 
@@ -222,18 +201,9 @@ bool ReceiveEvent(TASK_KIND_ENUM eTaskKind, uint32_t *pEvent, TickType_t xTicksT
 	}
 	*pEvent = 0x00000000;
 
-	// 指定タスクのミューテックスハンドル/イベントハンドル/キューハンドルのチェック
-	MutexHandle = g_tEvent.tTaskEvent[eTaskKind].MutexHandle;
-	EventGroupHandle = g_tEvent.tTaskEvent[eTaskKind].EventGroupHandle;
-	High_QueueHandle = g_tEvent.tTaskEvent[eTaskKind].QueueHandle[PRIORITY_KIND_HIGH];
-	Normal_QueueHandle = g_tEvent.tTaskEvent[eTaskKind].QueueHandle[PRIORITY_KIND_NORMAL];
-	if ((MutexHandle == NULL) || (EventGroupHandle == NULL) || (High_QueueHandle == NULL) || (Normal_QueueHandle == NULL))
-	{
-		return false;
-	}
-
 	// イベントグループBitが立つのを待つ
-	EventBits = xEventGroupWaitBits(EventGroupHandle, EVENT_GROUP_WAIT_BIT, pdFALSE, pdFALSE, xTicksToWait);
+//	printf("eTaskKind:%d , EventGroupHandle:%p\n",eTaskKind,g_tEvent.tTaskEvent[eTaskKind].EventGroupHandle);
+	EventBits = xEventGroupWaitBits(g_tEvent.tTaskEvent[eTaskKind].EventGroupHandle, EVENT_GROUP_WAIT_BIT, pdFALSE, pdFALSE, xTicksToWait);
 	if (EventBits == 0x00000000)
 	{
 		*pEvent = SYSTEM_EVENT_TIMEOUT;
@@ -241,30 +211,30 @@ bool ReceiveEvent(TASK_KIND_ENUM eTaskKind, uint32_t *pEvent, TickType_t xTicksT
 	else
 	{
 		// ▼----------------------------------▼
-		xSemaphoreTake(MutexHandle, portMAX_DELAY);
+		xSemaphoreTake(g_tEvent.tTaskEvent[eTaskKind].MutexHandle, portMAX_DELAY);
 
 		// システムイベントを優先的に取得
 		if (EventBits & EVENT_GROUP_BIT_SYSTEM)
 		{
 			// システムイベントを受信
-			Result = xQueueReceive(High_QueueHandle, pEvent, portMAX_DELAY);
+			Result = xQueueReceive(g_tEvent.tTaskEvent[eTaskKind].QueueHandle[PRIORITY_KIND_HIGH], pEvent, portMAX_DELAY);
 
 			// システム用のキューに何も入っていない場合は、イベントグループ用システムBitをクリアする
-			if (xQueueIsQueueEmptyFromISR(High_QueueHandle) == pdTRUE)
+			if (xQueueIsQueueEmptyFromISR(g_tEvent.tTaskEvent[eTaskKind].QueueHandle[PRIORITY_KIND_HIGH]) == pdTRUE)
 			{
-				xEventGroupClearBits(EventGroupHandle, EVENT_GROUP_BIT_SYSTEM);
+				xEventGroupClearBits(g_tEvent.tTaskEvent[eTaskKind].EventGroupHandle, EVENT_GROUP_BIT_SYSTEM);
 			}
 		}
 		// 通常イベントを取得
 		else if (EventBits & EVENT_GROUP_BIT_NORMAL)
 		{
 			// 通常イベントを受信
-			Result = xQueueReceive(Normal_QueueHandle, pEvent, portMAX_DELAY);
+			Result = xQueueReceive(g_tEvent.tTaskEvent[eTaskKind].QueueHandle[PRIORITY_KIND_NORMAL], pEvent, portMAX_DELAY);
 
 			// 通常用のキューに何も入っていない場合は、イベントグループ用通常Bitをクリアする
-			if (xQueueIsQueueEmptyFromISR(Normal_QueueHandle) == pdTRUE)
+			if (xQueueIsQueueEmptyFromISR(g_tEvent.tTaskEvent[eTaskKind].QueueHandle[PRIORITY_KIND_NORMAL]) == pdTRUE)
 			{
-				xEventGroupClearBits(EventGroupHandle, EVENT_GROUP_BIT_NORMAL);
+				xEventGroupClearBits(g_tEvent.tTaskEvent[eTaskKind].EventGroupHandle, EVENT_GROUP_BIT_NORMAL);
 			}
 		}
 		// あり得ないけど(馬鹿よけ)
@@ -273,7 +243,7 @@ bool ReceiveEvent(TASK_KIND_ENUM eTaskKind, uint32_t *pEvent, TickType_t xTicksT
 			*pEvent = 0x00000000;
 		}
 
-		xSemaphoreGive(MutexHandle);
+		xSemaphoreGive(g_tEvent.tTaskEvent[eTaskKind].MutexHandle);
 		// ▲----------------------------------▲
 	}
 

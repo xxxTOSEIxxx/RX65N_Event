@@ -487,7 +487,7 @@
         <Item currentVect="255" id="PERIA_INTA255" priority="15" usedState="未使用"/>
     </tool>
     <tool id="SWComponent" version="1.0.0.0">
-        <configuration id="7c2a2c84-606c-4f32-b0ec-788bc49adcfd" inuse="true" name="FreeRTOS_Kernel">
+        <configuration id="c45732fd-490d-46ed-9eaa-1e6e913c844f" inuse="true" name="FreeRTOS_Kernel">
             <component description="This component is a part of RTOS Configurator feature that allow user to use the GUI to configure kernel setting of FreeRTOS." detailDescription="" display="FreeRTOS_Kernel" id="com.renesas.smc.tools.swcomponent.rtosconfigurator.freertos.kernel" version="1.0.100">
                 <gridItem id="configUSE_PREEMPTION" selectedIndex="1"/>
                 <gridItem id="configUSE_IDLE_HOOK" selectedIndex="1"/>
@@ -557,7 +557,7 @@
             </component>
             <source description="Code generator for Real-time OS" display="RTOS Configurator" id="com.renesas.smc.tools.swcomponent.rtosconfigurator.source"/>
         </configuration>
-        <configuration id="37f5b035-f00e-4cd4-bd00-c0d2824fa597" inuse="true" name="FreeRTOS_Object">
+        <configuration id="f1d5d2b1-ce43-4b7f-9788-ada4f9aed147" inuse="true" name="FreeRTOS_Object">
             <allocatable id="OBJECT" name="OBJECT">
                 <allocatable id="TASK" name="TASK">
                     <allocatable id="TASKOBJECTLINK1" name="TASK">
@@ -587,7 +587,16 @@
                         <option defaultValue="NULL" id="Parameter" value="NULL"/>
                         <option defaultValue="1" id="Priority" value="3"/>
                     </allocatable>
-                    <option defaultValue="0" id="LinkNum" value="3"/>
+                    <allocatable id="TASKOBJECTLINK4" name="TASK">
+                        <option defaultValue="1" id="Initialize" value="1"/>
+                        <option defaultValue="task_[X]" id="TaskCode" value="Task_AudioPlayback"/>
+                        <option defaultValue="task_[X]" id="TaskName" value="Task_AudioPlayback"/>
+                        <option defaultValue="512" id="StackSize" value="512"/>
+                        <option defaultValue="NULL" id="TaskHandler" value="NULL"/>
+                        <option defaultValue="NULL" id="Parameter" value="NULL"/>
+                        <option defaultValue="1" id="Priority" value="3"/>
+                    </allocatable>
+                    <option defaultValue="0" id="LinkNum" value="4"/>
                 </allocatable>
                 <allocatable id="QUEUE" name="QUEUE">
                     <option defaultValue="0" id="LinkNum" value=""/>
@@ -669,6 +678,27 @@
         <configuration inuse="true" name="r_cmt_rx">
             <component description="依存モジュール: r_bsp バージョン 5.52&#10;This module creates a timer tick using a CMT channel based on a frequency input by the user." detailDescription="Simple CMT driver for creating timer tick." display="r_cmt_rx" id="r_cmt_rx4.70" version="4.70">
                 <gridItem id="CMT_RX_CFG_IPR" selectedIndex="5"/>
+            </component>
+            <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+            <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+        </configuration>
+        <configuration inuse="true" name="r_s2_rx">
+            <component description="依存モジュール: なし&#10;ADPCM compress/de-compress codec software library" detailDescription="ADPCM compress/de-compress codec software library" display="r_s2_rx" id="r_s2_rx3.04" version="3.04"/>
+            <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+            <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+        </configuration>
+        <configuration inuse="true" name="r_longq">
+            <component description="依存モジュール: r_bsp バージョン 3.10&#10;This module allocates a queue control block in an Open() call to handle indexing for buffers provided by the user application. Additional functions are provided to put and get data from the buffer queue, inspect the number of elements available or in use, and to flush the queue. There is no limit to the number of queues supported, and queue control blocks can be allocated statically at build time or dynamically at run time." detailDescription="Unsigned 32-bit circular buffer library." display="r_longq" id="r_longq1.81" version="1.81">
+                <gridItem id="LONGQ_CFG_PARAM_CHECKING_ENABLE" selectedIndex="0"/>
+                <gridItem id="LONGQ_CFG_USE_HEAP_FOR_CTRL_BLKS" selectedIndex="0"/>
+                <gridItem id="LONGQ_CFG_MAX_CTRL_BLKS" selectedIndex="100"/>
+            </component>
+            <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+            <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+        </configuration>
+        <configuration inuse="true" name="r_mpc_rx">
+            <component description="依存モジュール: r_bsp バージョン 5.52&#10;依存モジュール: r_gpio_rx バージョン 1.60, 1.70, 1.80, 1.90, 2.00, 2.10, 2.20, 2.30, 2.40, 2.41, 2.50, 3.00, 3.10, 3.20, 3.30, 3.40, 3.50&#10;Implements a Multi-Function Pin Controller driver. Allows users to easily setup the MPC registers for their device using r_gpio_rx pin definitions." detailDescription="Multi-Function Pin Controller Driver" display="r_mpc_rx" id="r_mpc_rx3.60" version="3.60">
+                <gridItem id="MPC_CFG_PARAM_CHECKING_ENABLE" selectedIndex="0"/>
             </component>
             <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
             <source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
